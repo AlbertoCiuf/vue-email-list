@@ -9,26 +9,33 @@
 
 
   <title>Vue Axios Email list</title>
+
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   
   
   <div id="app">
     <div class="ac-container vh-100 d-flex justify-content-center align-items-center fs-4 fw-bold">
-
-      <div v-if="isLoading===true">
-        <h2>The Page is Loading...</h2>
+      <div v-cloak>
+        <div v-if="isLoading===true">
+          <h2>The Page is Loading...</h2>
+        </div>
+        <div v-else>
+          <ul>
+            <li v-for="mail in mailList">
+              {{mail}}
+            </li>
+          </ul>
+        </div>
+        <h2 v-if="isError===true">
+          {{error}}
+        </h2>
       </div>
-      <div v-else>
-        <ul>
-          <li v-for="mail in mailList">
-            {{mail}}
-          </li>
-        </ul>
-      </div>
-      <h2 v-if="isError===true">
-        {{error}}
-      </h2>
     </div>
   </div>
   
