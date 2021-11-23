@@ -20,13 +20,14 @@ const app = new Vue({
         if (!this.mailList.includes(objData.response)) {
           this.mailList.push(objData.response);
         }
+        if (this.mailList.length === 10) this.isLoading = false;
         })        
         //in caso di errore nella chiamata:
-        .catch((error) => {
-          this.isError = true;
-        })
-      }
-    this.isLoading = false;
+      .catch((error) => {
+        this.isError = true;
+      })
+    }
+    
       
   },
 
